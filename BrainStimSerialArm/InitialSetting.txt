@@ -1,0 +1,2 @@
+1.Initializing the encoder value(TRUE/FALSE) : 
+ TRUE 

@@ -1,0 +1,9 @@
+ulButtonPressed
+
+검지 버튼: 8589934592
+엄지 버튼: 4294967296
+
+
+ulButtonTouched
+
+엄지 버튼: 4294967296

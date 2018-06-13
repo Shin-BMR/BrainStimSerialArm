@@ -1,0 +1,45 @@
+
+	//fill_n(preDefine_rz,10,0);
+	fill_n(preDefine_rx,10,180);
+	//preDefine_x[10] = {0,20,-10,30,-20,-50,10,60,-20,0};
+	//preDefine_y[10] = {0,20,-10,30,-20,-50,10,60,-20,0};
+	//preDefine_z[10] = {180,160,180,170,170,150,170,150,170,180};
+	//preDefine_ry[10] = {90,100,80,110,75,80,100,120,80,90};
+	// 배열 이렇게 입력이 왜 안될까.
+	// 나중에 데모를 위해서라도 텍스트파일 읽어서 하는게 나으려나.
+	// 근데 그전에 구면좌표계용 ik 만들어도 좋을거같다..
+
+	preDefine_x[0]=			 60;
+	preDefine_x[1]=			-60;
+	preDefine_x[2]=			-95;
+	preDefine_x[3]=			100;
+	preDefine_x[4]=			60;
+	preDefine_x[5]=			-60;
+
+	preDefine_y[0]=		 -80;
+	preDefine_y[1]=		-80;
+	preDefine_y[2]=		0;
+	preDefine_y[3]=		0;
+	preDefine_y[4]=		70;
+	preDefine_y[5]=		70;
+
+	preDefine_z[0]=		110;
+	preDefine_z[1]=		110;
+	preDefine_z[2]=		100;
+	preDefine_z[3]=		100;
+	preDefine_z[4]=		120;
+	preDefine_z[5]=		120;
+	
+	preDefine_rz[0]=		 -20;
+	preDefine_rz[1]=		40;
+	preDefine_rz[2]=		0;
+	preDefine_rz[3]=		0;
+	preDefine_rz[4]=		10;
+	preDefine_rz[5]=		-20;
+
+	preDefine_ry[0]=		 140;
+	preDefine_ry[1]=		40;
+	preDefine_ry[2]=		50;
+	preDefine_ry[3]=		140;
+	preDefine_ry[4]=		130;
+	preDefine_ry[5]=		50;
