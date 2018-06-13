@@ -1,19 +1,84 @@
-﻿빌드 시작: 2018-06-12 오후 11:28:33
+﻿빌드 시작: 2018-06-14 오전 12:16:25
      1>2 노드의 "C:\Project_byH\tmsRobot\RoboticBrainStim\RoboticBrainStim\BrainStimSerialArm\BrainStimSerialArm.vcxproj" 프로젝트(build 대상)입니다.
      1>InitializeBuildStatus:
          "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\BrainStimSerialArm.unsuccessfulbuild"을(를) 만들고 있습니다.
        ClCompile:
          모든 출력이 최신 상태입니다.
-         모든 출력이 최신 상태입니다.
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Project_byH\tmsRobot\RoboticBrainStim\RoboticBrainStim\BrainStimSerialArm\\openvr\headers /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\BrainStimSerialArm.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt BrainStimSerialArmDlg.cpp
+         BrainStimSerialArmDlg.cpp
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(72): warning C4005: 'INT8_MIN' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(144) : 'INT8_MIN'의 이전 정의를 참조하십시오.
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(73): warning C4005: 'INT16_MIN' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(146) : 'INT16_MIN'의 이전 정의를 참조하십시오.
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(74): warning C4005: 'INT32_MIN' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(148) : 'INT32_MIN'의 이전 정의를 참조하십시오.
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(76): warning C4005: 'INT8_MAX' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(167) : 'INT8_MAX'의 이전 정의를 참조하십시오.
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(77): warning C4005: 'INT16_MAX' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(171) : 'INT16_MAX'의 이전 정의를 참조하십시오.
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(78): warning C4005: 'INT32_MAX' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(176) : 'INT32_MAX'의 이전 정의를 참조하십시오.
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(79): warning C4005: 'UINT8_MAX' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(168) : 'UINT8_MAX'의 이전 정의를 참조하십시오.
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(80): warning C4005: 'UINT16_MAX' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(173) : 'UINT16_MAX'의 이전 정의를 참조하십시오.
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(81): warning C4005: 'UINT32_MAX' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(178) : 'UINT32_MAX'의 이전 정의를 참조하십시오.
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(149): warning C4005: 'INT64_MIN' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(152) : 'INT64_MIN'의 이전 정의를 참조하십시오.
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(150): warning C4005: 'INT64_MAX' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(184) : 'INT64_MAX'의 이전 정의를 참조하십시오.
+     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdint.h(151): warning C4005: 'UINT64_MAX' : 매크로 재정의
+                 c:\program files (x86)\microsoft sdks\windows\v7.0a\include\intsafe.h(189) : 'UINT64_MAX'의 이전 정의를 참조하십시오.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(288): warning C4244: '=' : 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(289): warning C4244: '=' : 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(290): warning C4244: '=' : 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(319): warning C4244: '=' : 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(320): warning C4244: '=' : 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(330): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(330): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(333): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(333): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(344): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(344): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(347): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(347): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(356): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(356): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(359): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(359): warning C4244: '인수' : 'double'에서 'long'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(479): warning C4244: '초기화 중' : 'std::streamoff'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(1159): warning C4244: '=' : 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(1136): warning C4101: 'nowButton' :참조되지 않은 지역 변수입니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(1336): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(197) : 'strtok' 선언을 참조하십시오.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(1337): warning C4244: '초기화 중' : 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(1370): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(197) : 'strtok' 선언을 참조하십시오.
+     1>c:\project_byh\tmsrobot\roboticbrainstim\roboticbrainstim\brainstimserialarm\brainstimserialarmdlg.cpp(1377): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\string.h(197) : 'strtok' 선언을 참조하십시오.
        ResourceCompile:
          모든 출력이 최신 상태입니다.
        ManifestResourceCompile:
          모든 출력이 최신 상태입니다.
        Link:
-         모든 출력이 최신 상태입니다.
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Project_byH\tmsRobot\RoboticBrainStim\RoboticBrainStim\Debug\BrainStimSerialArm.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Project_byH\tmsRobot\RoboticBrainStim\RoboticBrainStim\BrainStimSerialArm\\openvr\lib\win32 winmm.lib EposCmd.lib openvr_api.lib /MANIFEST /ManifestFile:"Debug\BrainStimSerialArm.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Project_byH\tmsRobot\RoboticBrainStim\RoboticBrainStim\Debug\BrainStimSerialArm.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Project_byH\tmsRobot\RoboticBrainStim\RoboticBrainStim\Debug\BrainStimSerialArm.lib" /MACHINE:X86 Debug\BrainStimSerialArm.res
+         Debug\BrainStimSerialArm.exe.embed.manifest.res
+         Debug\BrainStimSerialArm.obj
+         Debug\BrainStimSerialArmDlg.obj
+         Debug\JointControl.obj
+         Debug\Kinematics.obj
+         Debug\LedButton.obj
+         Debug\MaxonLib.obj
+         Debug\namedPipe.obj
+         Debug\SerialPort.obj
+         Debug\stdafx.obj
        Manifest:
          c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\BrainStimSerialArm.exe.embed.manifest" /manifest Debug\BrainStimSerialArm.exe.intermediate.manifest "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
          모든 출력이 최신 상태입니다.
+       LinkEmbedManifest:
+         모든 출력이 최신 상태입니다.
+         BrainStimSerialArm.vcxproj -> C:\Project_byH\tmsRobot\RoboticBrainStim\RoboticBrainStim\Debug\BrainStimSerialArm.exe
        FinalizeBuildStatus:
          "Debug\BrainStimSerialArm.unsuccessfulbuild" 파일을 삭제하고 있습니다.
          "Debug\BrainStimSerialArm.lastbuildstate"에 연결(touching)하고 있습니다.
@@ -21,4 +86,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:01.29
+경과 시간: 00:00:03.59

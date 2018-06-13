@@ -122,6 +122,8 @@ BEGIN_MESSAGE_MAP(CBrainStimSerialArmDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_SavePose, &CBrainStimSerialArmDlg::OnBnClickedSavePose)
 	ON_BN_CLICKED(IDC_DeletePose, &CBrainStimSerialArmDlg::OnBnClickedDeletepose)
 	ON_BN_CLICKED(IDC_Stimulate, &CBrainStimSerialArmDlg::OnBnClickedStimulate)
+	ON_BN_CLICKED(IDC_LoadPose, &CBrainStimSerialArmDlg::OnBnClickedLoadpose)
+	ON_BN_CLICKED(IDC_ExtractPose, &CBrainStimSerialArmDlg::OnBnClickedExtractpose)
 END_MESSAGE_MAP()
 // CBrainStimSerialArmDlg 메시지 처리기
 LRESULT CBrainStimSerialArmDlg::OnUpdateData(WPARAM wParam, LPARAM lParam)// Encoder update
@@ -416,8 +418,8 @@ BOOL CBrainStimSerialArmDlg::OnInitDialog()
 		{	pSysMenu->AppendMenu(MF_SEPARATOR);	pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
 		}
 	}
-	SetIcon(m_hIcon, TRUE);			// 큰 아이콘을 설정합니다.
-	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
+	SetIcon(m_hIcon, TRUE);			
+	SetIcon(m_hIcon, FALSE);		
 
 	InitNodeId = 1;
 	FinalNodeId = 6;
@@ -841,59 +843,6 @@ void CBrainStimSerialArmDlg::OnBnClickedCompensation()
 
 
 
-// Joint space control 
-void CBrainStimSerialArmDlg::OnBnClickedJointcontrol()
-{
-	JointControl jDlg;
-	jDlg.DoModal();
-}
-void CBrainStimSerialArmDlg::OnChangeEditTranslationXaxis()
-{
-	bPredefined = FALSE;	m_SystemMode = "General Mode";
-    if(m_hWnd) UpdateData(true);
-}
-void CBrainStimSerialArmDlg::OnChangeEditTranslationYaxis()
-{
-	bPredefined = FALSE;	m_SystemMode = "General Mode";
-    if(m_hWnd) UpdateData(true);
-}
-void CBrainStimSerialArmDlg::OnChangeEditTranslationZaxis()
-{
-	bPredefined = FALSE;	m_SystemMode = "General Mode";
-    if(m_hWnd) UpdateData(true);
-}
-void CBrainStimSerialArmDlg::OnChangeEditRotationXaxis()
-{
-	bPredefined = FALSE;	m_SystemMode = "General Mode";
-    if(m_hWnd) UpdateData(true);
-}
-void CBrainStimSerialArmDlg::OnChangeEditRotationYaxis()
-{
-	bPredefined = FALSE;	m_SystemMode = "General Mode";
-    if(m_hWnd) UpdateData(true);
-}
-void CBrainStimSerialArmDlg::OnChangeEditRotationZaxis()
-{
-	bPredefined = FALSE;	m_SystemMode = "General Mode";
-    if(m_hWnd) UpdateData(true);
-}
-void CBrainStimSerialArmDlg::OnChangeEditAdjRotationZaxis()
-{
-	bPredefined = FALSE;	m_SystemMode = "General Mode";
-    if(m_hWnd) UpdateData(true);
-}
-void CBrainStimSerialArmDlg::OnChangeEditAdjRotationYaxis()
-{
-	bPredefined = FALSE;	m_SystemMode = "General Mode";
-    if(m_hWnd) UpdateData(true);
-}
-void CBrainStimSerialArmDlg::OnChangeEditAdjRotationXaxis()
-{
-	bPredefined = FALSE;	m_SystemMode = "General Mode";
-    if(m_hWnd) UpdateData(true);
-}
-
-
 
 void CBrainStimSerialArmDlg::OnBnClickedOk()
 {
@@ -1306,7 +1255,7 @@ void CBrainStimSerialArmDlg::OnBnClickedSavePose()
 	//cout << "T_EEMarkerToD : " << T_EEMarkerToD << endl;
 	//cout << T_HMarkerToD << endl;
 
-
+	
 	Pose HMarkerToD_Pose;
 	k->GetEuler(&T_HMarkerToD,&HMarkerToD_Pose);
 
@@ -1351,17 +1300,6 @@ void CBrainStimSerialArmDlg::OnBnClickedDeletepose()
 
 void CBrainStimSerialArmDlg::OnBnClickedStimulate()
 {
-	WORD position_pgain,position_igain,position_dgain;
-	DWORD m_ulErrorCode;
-	for(int i=1;i<7;i++)
-	{
-		VCS_GetPositionRegulatorGain(MaxonHandle,i, &position_pgain, &position_igain, &position_dgain, &m_ulErrorCode);
-		cout << i << " 번째 P, I , D : " << position_pgain << " , " << position_igain << " , " << position_dgain << endl;
-	}
-	
-	//VCS_SetPositionRegulatorGain(MaxonHandle, 2, 700, 100, 500, &m_ulErrorCode);
-   
-	/*
 	float emgData[5];
 	Ikjoint InvK;
 	Pose P_desired;
@@ -1405,6 +1343,114 @@ void CBrainStimSerialArmDlg::OnBnClickedStimulate()
 		}//다섯번 반복하는 for문 종료
 		cout << j <<"번째 :" << emgData[0] << "," << emgData[1] << "," << emgData[2] <<"," << emgData[3] <<"," << emgData[4] <<endl;
 	}
-	*/
+}
 
+
+void CBrainStimSerialArmDlg::OnBnClickedLoadpose()
+{	
+	ifstream fileReader("Target_180613.txt");			
+	if(!fileReader.is_open())
+	{
+		cout<<"Could not open file!" <<endl;
+	}
+	int num = 0;	CString strItemCount; int j = 0;
+	string line;
+	while(std::getline(fileReader,line)){ // 저장된 파일을 한 줄씩 읽어옴. string 형식
+		vector<char> c(line.begin(),line.end());	// string -> char 
+		c.push_back('\0');		char* ptr = &c[0];		
+
+		num++; //  한 줄씩 읽을 때마다 저장된 자세의 개수 추가
+		strItemCount.Format(_T("%d"), num);
+		LVITEM LI;
+		LI.mask = LVIF_TEXT | LVIF_STATE;
+		LI.iItem = num-1;		LI.iSubItem = 0;	LI.state = INDEXTOSTATEIMAGEMASK(1);
+		LI.pszText = (LPWSTR)(LPCTSTR)strItemCount; // 전체 개수 표시
+		m_CListCtrl.InsertItem(&LI); 	
+	
+		char* token = strtok(ptr," ");
+		while(token != NULL) {		// char[] 를 " " 기준으로 파싱
+			CString strBuffer;
+			strBuffer = (LPSTR)token;			
+			j++;	// 컬럼 위치 증가
+			if(j==7) {j = 1;}			
+			LI.pszText = (LPWSTR)(LPCTSTR)strBuffer;		m_CListCtrl.SetItemText(num-1,j,strBuffer);
+			token = strtok(NULL," "); // 파싱 시 사용됨
+		}		
+	}
+	fileReader.close();
+}
+
+void CBrainStimSerialArmDlg::OnBnClickedExtractpose()
+{
+	ofstream file_writer("Target_180613.txt");	
+
+	if(!file_writer.is_open())
+	{
+		cout<<"Could not open file!" <<endl;
+	}
+	else
+	{	
+		int nCnt = m_CListCtrl.GetItemCount(); // 리스트 전체 개수
+
+		for(int i = 0; i < nCnt ; i++)
+		{
+		file_writer << _wtof(m_CListCtrl.GetItemText(i,1)) << " " <<  _wtof(m_CListCtrl.GetItemText(i,2)) << " "<<  _wtof(m_CListCtrl.GetItemText(i,3)) << " "<<  _wtof(m_CListCtrl.GetItemText(i,4)) << " "<<  _wtof(m_CListCtrl.GetItemText(i,5)) << " "<<  _wtof(m_CListCtrl.GetItemText(i,6))<<endl;
+		}
+		cout<<"Data file was saved." <<endl;	
+	}
+}
+
+
+
+
+// Joint space control 
+void CBrainStimSerialArmDlg::OnBnClickedJointcontrol()
+{
+	JointControl jDlg;
+	jDlg.DoModal();
+}
+void CBrainStimSerialArmDlg::OnChangeEditTranslationXaxis()
+{
+	bPredefined = FALSE;	m_SystemMode = "General Mode";
+    if(m_hWnd) UpdateData(true);
+}
+void CBrainStimSerialArmDlg::OnChangeEditTranslationYaxis()
+{
+	bPredefined = FALSE;	m_SystemMode = "General Mode";
+    if(m_hWnd) UpdateData(true);
+}
+void CBrainStimSerialArmDlg::OnChangeEditTranslationZaxis()
+{
+	bPredefined = FALSE;	m_SystemMode = "General Mode";
+    if(m_hWnd) UpdateData(true);
+}
+void CBrainStimSerialArmDlg::OnChangeEditRotationXaxis()
+{
+	bPredefined = FALSE;	m_SystemMode = "General Mode";
+    if(m_hWnd) UpdateData(true);
+}
+void CBrainStimSerialArmDlg::OnChangeEditRotationYaxis()
+{
+	bPredefined = FALSE;	m_SystemMode = "General Mode";
+    if(m_hWnd) UpdateData(true);
+}
+void CBrainStimSerialArmDlg::OnChangeEditRotationZaxis()
+{
+	bPredefined = FALSE;	m_SystemMode = "General Mode";
+    if(m_hWnd) UpdateData(true);
+}
+void CBrainStimSerialArmDlg::OnChangeEditAdjRotationZaxis()
+{
+	bPredefined = FALSE;	m_SystemMode = "General Mode";
+    if(m_hWnd) UpdateData(true);
+}
+void CBrainStimSerialArmDlg::OnChangeEditAdjRotationYaxis()
+{
+	bPredefined = FALSE;	m_SystemMode = "General Mode";
+    if(m_hWnd) UpdateData(true);
+}
+void CBrainStimSerialArmDlg::OnChangeEditAdjRotationXaxis()
+{
+	bPredefined = FALSE;	m_SystemMode = "General Mode";
+    if(m_hWnd) UpdateData(true);
 }

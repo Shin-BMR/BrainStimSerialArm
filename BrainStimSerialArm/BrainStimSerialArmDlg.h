@@ -7,6 +7,7 @@
 #include "namedPipe.h"
 #include "LedButton.h" // led button을 위해서.
 #include <MMSystem.h> // multi-media timer를 위해서.
+#include <vector>
 
 #include "SerialComm\SerialPort.h"
 
@@ -119,4 +120,6 @@ public:
 	CListCtrl m_CListCtrl;
 	afx_msg void OnBnClickedDeletepose();
 	afx_msg void OnBnClickedStimulate();
+	afx_msg void OnBnClickedLoadpose();
+	afx_msg void OnBnClickedExtractpose();
 };

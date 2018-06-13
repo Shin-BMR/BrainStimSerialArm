@@ -13,13 +13,13 @@
 using namespace std;
 IMPLEMENT_DYNAMIC(JointControl, CDialogEx)
 
+
 JointControl::JointControl(CWnd* pParent /*=NULL*/)
 	: CDialogEx(JointControl::IDD, pParent)
 	, jointNodeId(0)
 	, jointTargetPosition(0)
 	, jointMaxVelocity(200)
 {
-
 }
 
 JointControl::~JointControl()
@@ -38,6 +38,7 @@ void JointControl::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX,IDC_JointStatus4,m_JointStatus4);
 	DDX_Text(pDX,IDC_JointStatus5,m_JointStatus5);
 	DDX_Text(pDX,IDC_JointStatus6,m_JointStatus6);
+	DDX_Control(pDX, IDC_PositionGain, m_PositionGain);
 }
 
 
@@ -51,10 +52,10 @@ BEGIN_MESSAGE_MAP(JointControl, CDialogEx)
 	ON_BN_CLICKED(IDC_FindHome, &JointControl::OnBnClickedFindhome)
 	ON_BN_CLICKED(IDOK, &JointControl::OnBnClickedOk)
 	ON_BN_CLICKED(IDC_Constraint, &JointControl::OnBnClickedConstraint)
+	ON_BN_CLICKED(IDC_GetPositionGain, &JointControl::OnBnClickedGetpositiongain)
 END_MESSAGE_MAP()
 
 
-// JointControl 메시지 처리기입니다.
 
 void JointControl::OnBnClickedjointmove()
 {
@@ -183,4 +184,63 @@ void JointControl::OnBnClickedConstraint()
 		cout<<"Set the constraint. "<< endl;
 		cout << "Constraint Flag is 'TRUE' ." <<endl;
 	}
+}
+
+
+void JointControl::OnBnClickedGetpositiongain()
+{	
+	// JointControl Dialog 실행 시 Control List 출력 형식은 자동으로 표시가 안돼서
+	// 아래 if문으로 아이템 개수로 초기 출력인지 아닌지 확인
+	if(m_PositionGain.GetHeaderCtrl()->GetItemCount()==0)
+	{
+		LVCOLUMN LC;
+		LC.mask = LVCF_FMT | LVCF_SUBITEM | LVCF_TEXT | LVCF_WIDTH;	LC.fmt = LVCFMT_CENTER;
+		LC.iSubItem = 0;	LC.pszText = _T("Node");	LC.cx = 55;
+		m_PositionGain.InsertColumn(0,&LC);	
+		LC.iSubItem = 1;	LC.pszText = _T("Kp");	LC.cx = 50;
+		m_PositionGain.InsertColumn(1,&LC);
+		LC.iSubItem = 2;	LC.pszText = _T("Ki");	LC.cx = 50;
+		m_PositionGain.InsertColumn(2,&LC);
+		LC.iSubItem = 3;	LC.pszText = _T("Kd");	LC.cx = 50;
+		m_PositionGain.InsertColumn(3,&LC);	
+
+		m_PositionGain.InsertItem(0, _T("1")); 	m_PositionGain.InsertItem(1, _T("2")); 	m_PositionGain.InsertItem(2, _T("3")); 
+		m_PositionGain.InsertItem(3, _T("4")); 	m_PositionGain.InsertItem(4, _T("5"));	m_PositionGain.InsertItem(5, _T("6"));
+	}
+
+	WORD position_pgain[6],position_igain[6],position_dgain[6];	
+	CString strP[6],strI[6],strD[6];	
+	DWORD m_ulErrorCode;
+
+	for(int i=1;i<7;i++)
+	{
+		VCS_GetPositionRegulatorGain(MaxonHandle,i, &position_pgain[i-1], &position_igain[i-1], &position_dgain[i-1], &m_ulErrorCode);
+		cout << i << " 번째 P, I , D : " << position_pgain << " , " << position_igain << " , " << position_dgain << endl;
+		strP[i-1].Format(_T("%.1f"),position_pgain[i-1]);	
+		strI[i-1].Format(_T("%.1f"),position_igain[i-1]);	
+		strD[i-1].Format(_T("%.1f"),position_dgain[i-1]);	
+	}
+
+	// memcpy으로 CString 타입을 복사할 때는 초기화를 먼저 하고 해야함. 
+	CString strK[6] = {0};
+
+	for(int j = 1; j < 4; j++)
+	{
+		switch(j)
+		{	
+			case 1:	memcpy(strK,strP,sizeof(strK));
+				break;
+			case 2: memcpy(strK,strI,sizeof(strK));
+				break;
+			case 3: memcpy(strK,strD,sizeof(strK));
+				break;
+		}				
+		for(int i = 0; i < 6; i++)
+		{
+			m_PositionGain.SetItem(i, j, LVIF_TEXT, strK[i], 0, 0, 0, NULL ); 
+		}
+	}
+
+	
+	//VCS_SetPositionRegulatorGain(MaxonHandle, 2, 700, 100, 500, &m_ulErrorCode);
 }
